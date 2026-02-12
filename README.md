@@ -131,8 +131,6 @@ for (id, object) in project.objects {
 ## Requirements
 
 - Swift 6.2 or later
-- macOS 12.0 or later (for development)
-- iOS 13.0 or later (for runtime use)
 
 ## Testing
 
