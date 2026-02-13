@@ -8,19 +8,19 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "xdecodable",
-            targets: ["xdecodable"]
+            name: "Xdecodable",
+            targets: ["Xdecodable"]
         )
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "xdecodable"
+            name: "Xdecodable"
         ),
         .testTarget(
             name: "xdecodableTests",
-            dependencies: ["xdecodable"],
+            dependencies: ["Xdecodable"],
             resources: [
                 .copy("TestProjects")
             ]

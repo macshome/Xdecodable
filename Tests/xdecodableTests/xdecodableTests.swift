@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 
-@testable import xdecodable
+@testable import Xdecodable
 
 /// Tests that Xcode projects can be successfully decoded from their project.pbxproj files.
 ///
