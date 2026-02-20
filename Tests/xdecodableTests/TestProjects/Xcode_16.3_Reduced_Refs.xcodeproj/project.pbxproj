@@ -267,6 +267,10 @@
 			packageReferences = (
 				01E6D1E12F3CE7740059D772 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				01E6D1E22F3CE7990059D772 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				014522DF2F48EDB00009087B /* XCRemoteSwiftPackageReference "swift-atomics" */,
+				014522E02F48EDC80009087B /* XCRemoteSwiftPackageReference "swift-asn1" */,
+				014522E12F48EDE00009087B /* XCRemoteSwiftPackageReference "swift-numerics" */,
+				014522E22F48EE440009087B /* XCRemoteSwiftPackageReference "swift-certificates" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = D4D02DD022ED206E00F80FC8 /* Products */;
@@ -747,6 +751,39 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		014522DF2F48EDB00009087B /* XCRemoteSwiftPackageReference "swift-atomics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-atomics.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
+		014522E02F48EDC80009087B /* XCRemoteSwiftPackageReference "swift-asn1" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-asn1.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 2.0.0;
+				minimumVersion = 1.5.1;
+			};
+		};
+		014522E12F48EDE00009087B /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		014522E22F48EE440009087B /* XCRemoteSwiftPackageReference "swift-certificates" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-certificates.git";
+			requirement = {
+				kind = revision;
+				revision = 3bf87fd9eec0bc8ac679726eb1b1ae812a4e11cf;
+			};
+		};
 		01E6D1E12F3CE7740059D772 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";

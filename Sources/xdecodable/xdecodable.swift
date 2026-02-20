@@ -7,13 +7,13 @@ import Foundation
 public struct XcodeProject: Decodable {
     /// The archive version of the project file format
     public let archiveVersion: String
-    
+
     /// The object version indicating the Xcode compatibility level
     public let objectVersion: String
-    
+
     /// The unique identifier of the root `PBXProject` object
     public let rootObject: String
-    
+
     /// Dictionary mapping unique object IDs to their corresponding project objects
     public let objects: [String: ProjectObject]
 }
@@ -65,17 +65,17 @@ public enum ProjectObject: Decodable {
     case buildRule(PBXBuildRule)
     /// A proxy reference to a product from another project
     case referenceProxy(PBXReferenceProxy)
-    
+
     enum CodingKeys: String, CodingKey {
         case isa
     }
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let isa = try container.decode(String.self, forKey: .isa)
-        
+
         let singleValueContainer = try decoder.singleValueContainer()
-        
+
         switch isa {
         case "PBXGroup":
             self = .group(try singleValueContainer.decode(PBXGroup.self))
@@ -415,12 +415,28 @@ public struct XCRemoteSwiftPackageReference: Decodable {
     public let requirement: PackageRequirement
 }
 
+/// Represents the type of version requirement for a Swift package.
+public enum PackageRequirementKind: String, Decodable, CaseIterable {
+    /// Require versions up to the next minor version (e.g., 1.2.x)
+    case upToNextMinorVersion
+    /// Require versions up to the next major version (e.g., 1.x.x)
+    case upToNextMajorVersion
+    /// Require a specific branch
+    case branch
+    /// Require an exact version
+    case exactVersion
+    /// Require a version within a specific range
+    case versionRange
+    /// Require a specific commit revision
+    case revision
+}
+
 /// Represents version requirements for a Swift package.
 ///
 /// Specifies how package versions are resolved (e.g., semantic versioning ranges, branches, or specific revisions).
 public struct PackageRequirement: Decodable {
-    /// Requirement kind (e.g., "upToNextMajorVersion", "branch", "revision", "exact")
-    public let kind: String
+    /// Requirement kind (type of version constraint)
+    public let kind: PackageRequirementKind
     /// Minimum version for range-based requirements (e.g., "1.0.0")
     public let minimumVersion: String?
     /// Maximum version for range-based requirements (e.g., "2.0.0")
@@ -523,10 +539,10 @@ public struct PBXReferenceProxy: Decodable {
 public struct AnyCodable: Decodable {
     /// The underlying value of any type
     public let value: Any
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        
+
         if let bool = try? container.decode(Bool.self) {
             value = bool
         } else if let int = try? container.decode(Int.self) {
